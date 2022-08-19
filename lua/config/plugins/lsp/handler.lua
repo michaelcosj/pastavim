@@ -13,6 +13,39 @@ function M.init()
 		border = "rounded",
 		width = 60,
 	})
+
+	-- Diagnostics signs in gutter
+	local signs = {
+		DiagnosticSignError = " ",
+		DiagnosticSignWarn = " ",
+		DiagnosticSignHint = " ",
+		DiagnosticSignInfo = " ",
+	}
+	for hl, icon in pairs(signs) do
+		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+	end
+
+	-- Diagnostics settings
+	vim.diagnostic.config({
+		virtual_text = {
+			prefix = "",
+		},
+		signs = {
+			active = signs,
+		},
+		update_in_insert = true,
+		underline = true,
+		severity_sort = true,
+		float = {
+			focusable = false,
+			style = "minimal",
+			border = "rounded",
+			source = "always",
+			header = "",
+			prefix = "",
+		},
+	})
+
 	-- for code CodeActionMenu
 	vim.g.code_action_menu_window_border = "rounded"
 end
