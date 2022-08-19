@@ -1,16 +1,16 @@
 ---@diagnostic disable: redefined-local
-local status_ok, cmp = pcall(require, "cmp")
-if not status_ok then
+local ok, cmp = pcall(require, "cmp")
+if not ok then
 	return
 end
 
-local status_ok, luasnip = pcall(require, "luasnip")
-if not status_ok then
+local ok, luasnip = pcall(require, "luasnip")
+if not ok then
 	return
 end
 
-local status_ok, lspkind = pcall(require, "lspkind")
-if not status_ok then
+local ok, lspkind = pcall(require, "lspkind")
+if not ok then
 	return
 end
 

@@ -1,14 +1,7 @@
-local status_ok, bufferline = pcall(require, "bufferline")
-if not status_ok then
+local ok, bufferline = pcall(require, "bufferline")
+if not ok then
 	return
 end
-
-local get_hex = require("config.core.utils").get_hl_attr
-
-local err_hl = get_hex("DiagnosticError", "fg", "#e55666")
-local warn_hl = get_hex("DiagnosticWarn", "fg", "#f6d634")
-local hint_hl = get_hex("DiagnosticHint", "fg", "#65e566")
-local info_hl = get_hex("DiagnosticInfo", "fg", "#324232")
 
 local kanagawa_dark_bg = "#16161D"
 
@@ -87,33 +80,7 @@ bufferline.setup({
 		enforce_regular_tabs = true,
 		always_show_bufferline = true,
 
-		custom_areas = {
-			right = function()
-				local result = {}
-				local seve = vim.diagnostic.severity
-				local error = #vim.diagnostic.get(0, { severity = seve.ERROR })
-				local warning = #vim.diagnostic.get(0, { severity = seve.WARN })
-				local info = #vim.diagnostic.get(0, { severity = seve.INFO })
-				local hint = #vim.diagnostic.get(0, { severity = seve.HINT })
-
-				if error ~= 0 then
-					table.insert(result, { text = "  " .. error, fg = err_hl })
-				end
-
-				if warning ~= 0 then
-					table.insert(result, { text = "  " .. warning, fg = warn_hl })
-				end
-
-				if hint ~= 0 then
-					table.insert(result, { text = "  " .. hint, fg = hint_hl })
-				end
-
-				if info ~= 0 then
-					table.insert(result, { text = "  " .. info, fg = info_hl })
-				end
-				return result
-			end,
-		},
+		custom_areas = nil,
 	},
 })
 

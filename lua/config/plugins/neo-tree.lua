@@ -1,8 +1,8 @@
 -- remove deprecated commands
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
-local status_ok, neo_tree = pcall(require, "neo-tree")
-if not status_ok then
+local ok, neo_tree = pcall(require, "neo-tree")
+if not ok then
 	return
 end
 

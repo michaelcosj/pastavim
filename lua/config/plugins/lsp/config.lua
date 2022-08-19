@@ -1,11 +1,11 @@
 ---@diagnostic disable: redefined-local
-local status_ok, lspconfig = pcall(require, "lspconfig")
-if not status_ok then
+local ok, lspconfig = pcall(require, "lspconfig")
+if not ok then
 	return
 end
 
-local status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
-if not status_ok then
+local ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not ok then
 	return
 end
 
@@ -50,7 +50,6 @@ local on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
 		client.resolved_capabilities.document_range_formatting = false
 	else
-		vim.notify("FormattingEnabled")
 		handler.fmt_keymaps(bufnr)
 		handler.fmt_on_save(client, bufnr)
 	end
@@ -59,12 +58,12 @@ local on_attach = function(client, bufnr)
 	handler.auto_hover()
 
 	-- codecontext on winbar
-	local status_ok, navic = pcall(require, "nvim-navic")
-	if status_ok then
+	local ok, navic = pcall(require, "nvim-navic")
+	if ok then
 		navic.attach(client, bufnr)
 	end
 
-	vim.notify("client " .. client.name .. " attached", nil, { timeout = 100 })
+	print("client " .. client.name .. " attached")
 end
 
 -- Autocomplete
