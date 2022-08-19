@@ -9,28 +9,19 @@ bufferline.setup({
 	highlights = {
 		fill = {
 			bg = kanagawa_dark_bg,
-			-- bg = "bg"
 		},
 		background = {
 			bg = kanagawa_dark_bg,
-			-- bg = "bg"
 			italic = true,
 		},
 		numbers = {
 			bg = kanagawa_dark_bg,
-			-- bg = "bg"
-		},
-		separator = {
-			-- fg = "bg",
-			bg = kanagawa_dark_bg,
-			-- bg = "bg",
 		},
 		close_button = {
-			-- bg = "bg",
 			bg = kanagawa_dark_bg,
 		},
-		indicator_visible = {
-			bg = "bg",
+		indicator_selected = {
+			fg = "#938AA9",
 		},
 	},
 
@@ -74,9 +65,7 @@ bufferline.setup({
 		show_close_icon = false,
 		show_tab_indicators = true,
 		persist_buffer_sort = false,
-		-- separator_style = { "", "" },
-		-- separator_style = { "", "" },
-		separator_style = "thin",
+		separator_style = { "", "" },
 		enforce_regular_tabs = true,
 		always_show_bufferline = true,
 
