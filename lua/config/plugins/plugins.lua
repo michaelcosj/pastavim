@@ -80,6 +80,7 @@ return {
 		config = function()
 			require("notify").setup({
 				render = "minimal",
+				background_colour = "#000000",
 			})
 			vim.notify = require("notify")
 		end,
@@ -218,15 +219,6 @@ return {
 	--- Show current code context on winbar
 	---- https://github.com/SmiteshP/nvim-navic
 	{ "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig" },
-
-	--- Fancy UI to show lsp progress
-	---- https://github.com/j-hui/fidget.nvim
-	{
-		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup({})
-		end,
-	},
 
 	--- Completions
 	---- https://github.com/hrsh7th/nvim-cmp
