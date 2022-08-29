@@ -21,6 +21,7 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", {})
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", {})
 
 -- Navigate buffers
+-- NOTE: using bufdelete plugin instead
 -- keymap("n", "<S-l>", ":bnext<CR>", {})
 -- keymap("n", "<S-h>", ":bprevious<CR>", {})
 
@@ -32,8 +33,8 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", {})
 keymap("n", "<leader>w", ":w<CR>", {})
 
 -- Insert --
--- Press jk fast to exit insert mode 
-keymap("i", "jk", "<ESC>", {})
+-- Press jk fast to exit insert mode
+-- keymap("i", "jk", "<ESC>", {})
 
 -- Visual --
 -- Stay in indent mode
