@@ -3,22 +3,10 @@ if not ok then
 	return
 end
 
-local kanagawa_dark_bg = "#16161D"
-
 bufferline.setup({
 	highlights = {
-		fill = {
-			bg = kanagawa_dark_bg,
-		},
 		background = {
-			bg = kanagawa_dark_bg,
 			italic = true,
-		},
-		numbers = {
-			bg = kanagawa_dark_bg,
-		},
-		close_button = {
-			bg = kanagawa_dark_bg,
 		},
 		indicator_selected = {
 			fg = "#938AA9",
@@ -34,7 +22,10 @@ bufferline.setup({
 		-- NOTE: this plugin is designed with this icon in mind,
 		-- and so changing this is NOT recommended, this is intended
 		-- as an escape hatch for people who cannot bear it for whatever reason
-		indicator_icon = "▎",
+		indicator = {
+			style = "icon",
+			icon = "▎",
+		},
 		buffer_close_icon = "",
 		modified_icon = "●",
 		close_icon = "",
