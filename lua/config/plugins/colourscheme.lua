@@ -22,21 +22,3 @@ require("kanagawa").setup({
 	theme = "default",
 })
 vim.cmd([[colorscheme kanagawa]])
-
--- Horizon
--- vim.cmd([[colorscheme horizon]])
-
--- Everblush
--- vim.cmd([[colorscheme everblush]])
-
--- Gruvbox
--- vim.o.background = "dark" -- or "light" for light mode
--- vim.cmd([[colorscheme gruvbox]])
-
--- Catppuccin
--- vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
--- require("catppuccin").setup()
--- vim.cmd([[colorscheme catppuccin]])
-
--- Nord
--- vim.cmd([[colorscheme nord]])
