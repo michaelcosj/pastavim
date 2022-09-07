@@ -9,7 +9,7 @@ opt.shiftwidth = 2
 opt.smartcase = true
 opt.smartindent = true
 opt.spell = true
-opt.spelllang = { "en_us" }
+opt.spelllang = { "en_gb" }
 opt.tabstop = 2
 opt.shortmess:append("c")
 opt.whichwrap:append("<,>,[,],h,l")
