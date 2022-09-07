@@ -46,9 +46,7 @@ ts_conf.setup({
 	context_commentstring = {
 		enable = true,
 		enable_autocmd = false,
-		config = {
-			css = "// %s",
-		},
+		config = {},
 	},
 
 	indent = { enable = true },
