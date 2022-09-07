@@ -89,6 +89,7 @@ cmp.setup({
 		{ name = "luasnip" },
 	}, {
 		{ name = "buffer" },
+		{ name = "spell" },
 		{ name = "path" },
 		{ name = "emoji" },
 	}),

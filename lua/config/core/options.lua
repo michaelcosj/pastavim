@@ -6,10 +6,12 @@ opt.completeopt = { "menuone", "noselect" }
 opt.expandtab = true
 opt.fileencoding = "utf-8"
 opt.shiftwidth = 2
-opt.shortmess:append("c")
 opt.smartcase = true
 opt.smartindent = true
+opt.spell = true
+opt.spelllang = { "en_us" }
 opt.tabstop = 2
+opt.shortmess:append("c")
 opt.whichwrap:append("<,>,[,],h,l")
 
 -- backup
