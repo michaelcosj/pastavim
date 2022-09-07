@@ -63,7 +63,7 @@ local on_attach = function(client, bufnr)
 		navic.attach(client, bufnr)
 	end
 
-	print("client " .. client.name .. " attached")
+	vim.notify("client " .. client.name .. " attached")
 end
 
 -- Autocomplete
