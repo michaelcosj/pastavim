@@ -19,7 +19,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 --- Autocommand to install/update plugins on file save
---- FIX Doesn't work
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -97,10 +96,6 @@ return packer.startup({
 			--- Turn lines to comments easily
 			---- https://github.com/numToStr/Comment.nvim
 			{ "numToStr/Comment.nvim", config = get_plugin_config("comment") },
-
-			--- Treesitter plugin for setting commentstring based on cursor location
-			---- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
-			"JoosepAlviste/nvim-ts-context-commentstring",
 
 			--- Fancy fuzzy finder
 			---- https://github.com/nvim-telescope/telescope.nvim
