@@ -3,6 +3,11 @@ if not ok then
 	return
 end
 
+local ok, mason_null_ls = pcall(require, "")
+if not ok then
+	return
+end
+
 local formatting = null_ls.builtins.formatting
 
 null_ls.setup({
@@ -24,4 +29,8 @@ null_ls.setup({
 
 		require("config.core.utils").keymap("n", "<leader>xa", "<cmd>CodeActionMenu<CR>", { buffer = bufnr })
 	end,
+})
+
+require("mason-null-ls").setup({
+	automatic_installation = true,
 })

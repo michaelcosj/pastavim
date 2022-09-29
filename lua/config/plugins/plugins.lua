@@ -221,7 +221,11 @@ return packer.startup({
 
 			--- For formatters and linters
 			---- https://github.com/jose-elias-alvarez/null-ls.nvim
-			{ "jose-elias-alvarez/null-ls.nvim", config = get_plugin_config("lsp.null-ls") },
+			{
+				"jose-elias-alvarez/null-ls.nvim",
+				config = get_plugin_config("lsp.null-ls"),
+				requires = "jayp0521/mason-null-ls.nvim", ---- https://github.com/jayp0521/mason-null-ls.nvim
+			},
 
 			--- Floating code action menu
 			---- https://github.com/weilbith/nvim-code-action-menu

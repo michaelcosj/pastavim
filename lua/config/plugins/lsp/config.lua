@@ -9,22 +9,6 @@ if not ok then
 	return
 end
 
--- ServerName -> FormattingEnabled
-local servers = {
-	"asm_lsp",
-	"clangd",
-	"bashls",
-	"cssls",
-	"gopls",
-	"html",
-	"jsonls",
-	"marksman",
-	"pyright",
-	"sumneko_lua",
-	"tsserver",
-	"rust_analyzer",
-}
-
 local on_attach = function(client, bufnr)
 	-- Init mappings on attach
 	local handler = require("config.plugins.lsp.handler")
@@ -69,11 +53,26 @@ end
 -- Autocomplete
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+local servers = {
+	"asm_lsp",
+	"clangd",
+	"bashls",
+	"cssls",
+	"gopls",
+	"html",
+	"jsonls",
+	"marksman",
+	"pyright",
+	"sumneko_lua",
+	"tsserver",
+	"rust_analyzer",
+}
+
 mason_lspconfig.setup({
 	ensure_installed = servers,
 })
 
-for _, server in pairs(servers) do
+for _, server in pairs(mason_lspconfig.get_installed_servers()) do
 	local server_opts = {
 		on_attach = on_attach,
 		capabilities = capabilities,
