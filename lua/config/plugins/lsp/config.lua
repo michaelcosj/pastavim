@@ -14,29 +14,12 @@ local on_attach = function(client, bufnr)
 	local handler = require("config.plugins.lsp.handler")
 	handler.init()
 
+	-- Turn off formating for some servers
 	handler.lsp_keymaps(bufnr)
+
 	handler.diagnostics_keymaps()
 
-	-- Turn off formating for some servers
-	local no_fmt_servers = {
-		["asm_lsp"] = true,
-		["cssls"] = true,
-		["html"] = true,
-		["jsonls"] = true,
-		["marksman"] = true,
-		["pyright"] = true,
-		["sumneko_lua"] = true,
-		["tsserver"] = true,
-	}
-
-	-- TODO: Remove this when you upgrade to 0.8
-	if no_fmt_servers[client.name] then
-		client.resolved_capabilities.document_formatting = false
-		client.resolved_capabilities.document_range_formatting = false
-	else
-		handler.fmt_keymaps(bufnr)
-		handler.fmt_on_save(client, bufnr)
-	end
+	handler.fmt_on_save(client, bufnr)
 
 	-- Auto show diagnostics in hover window
 	handler.auto_hover()
@@ -53,23 +36,20 @@ end
 -- Autocomplete
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local servers = {
-	"asm_lsp",
-	"clangd",
-	"bashls",
-	"cssls",
-	"gopls",
-	"html",
-	"jsonls",
-	"marksman",
-	"pyright",
-	"sumneko_lua",
-	"tsserver",
-	"rust_analyzer",
-}
-
 mason_lspconfig.setup({
-	ensure_installed = servers,
+	ensure_installed = {
+		"clangd",
+		"bashls",
+		"cssls",
+		"gopls",
+		"html",
+		"jsonls",
+		"marksman",
+		"pyright",
+		"sumneko_lua",
+		"tsserver",
+		"rust_analyzer",
+	},
 })
 
 for _, server in pairs(mason_lspconfig.get_installed_servers()) do
