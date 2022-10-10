@@ -1,11 +1,11 @@
 local ok, comment = pcall(require, "Comment")
 if not ok then
-	return
+  return
 end
 
 comment.setup({
-	ignore = "^$",
-	mappings = false,
+  ignore = "^$",
+  mappings = false,
 })
 
 -- keymaps
@@ -14,10 +14,10 @@ local opt = { expr = true, remap = true, replace_keycodes = false }
 
 -- Toggle using count
 keymap(
-	"n",
-	"<C-/>",
-	"v:count == 0 ? '<Plug>(comment_toggle_linewise_current)' : '<Plug>(comment_toggle_linewise_count)'",
-	opt
+  "n",
+  "<C-c>",
+  "v:count == 0 ? '<Plug>(comment_toggle_linewise_current)' : '<Plug>(comment_toggle_linewise_count)'",
+  opt
 )
 
 -- Toggle in VISUAL mode
