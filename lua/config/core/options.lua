@@ -21,7 +21,7 @@ opt.undofile = true
 opt.writebackup = false
 
 -- ui
-opt.cmdheight = 2
+opt.cmdheight = 1
 opt.conceallevel = 0
 opt.cursorline = true
 opt.foldenable = false
