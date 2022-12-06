@@ -15,11 +15,11 @@ local opt = { expr = true, remap = true, replace_keycodes = false }
 -- Toggle using count
 keymap(
   "n",
-  "<C-c>",
+  "gc",
   "v:count == 0 ? '<Plug>(comment_toggle_linewise_current)' : '<Plug>(comment_toggle_linewise_count)'",
   opt
 )
 
 -- Toggle in VISUAL mode
-keymap("x", "<C-/>", "<Plug>(comment_toggle_linewise_visual)")
-keymap("x", "<C-c>", "<Plug>(comment_toggle_blockwise_visual)")
+keymap("x", "gc", "<Plug>(comment_toggle_linewise_visual)")
+keymap("x", "gC", "<Plug>(comment_toggle_blockwise_visual)")
