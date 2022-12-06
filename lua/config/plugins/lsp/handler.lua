@@ -65,9 +65,10 @@ end
 
 function M.common_keymaps(bufnr)
   local bufopts = { buffer = bufnr }
-  keymap("n", "<leader>xa", "<cmd>CodeActionMenu<CR>", bufopts)
   keymap("n", "<leader>f", vim.lsp.buf.format, bufopts)
   keymap("v", "<leader>f", vim.lsp.buf.format, bufopts)
+  keymap("n", "<leader>xa", vim.lsp.buf.code_action, bufopts)
+  keymap("v", "<leader>xa", vim.lsp.buf.code_action, bufopts)
 end
 
 function M.lsp_keymaps(bufnr)
@@ -82,8 +83,7 @@ function M.lsp_keymaps(bufnr)
   keymap("n", "gr", "<cmd>TroubleToggle lsp_references<cr>", bufopts)
   keymap("n", "<leader>xD", "<cmd>TroubleToggle lsp_type_definitions<cr>", bufopts)
 
-  keymap("n", "<leader>rn", "<cmd>lua require('renamer').rename()<cr>", bufopts)
-  keymap("n", "<leader>xs", "<cmd>SymbolsOutline<cr>", bufopts)
+  keymap("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
 
   keymap("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
   keymap("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
