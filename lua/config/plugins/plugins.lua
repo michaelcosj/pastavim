@@ -52,26 +52,13 @@ return packer.startup({
       ---- https://github.com/nvim-treesitter/nvim-treesitter
       { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = get_plugin_config("treesitter") },
 
-      --- Neovim functions and utils required by some plugins
-      ---- https://github.com/nvim-lua/plenary.nvim
-      "nvim-lua/plenary.nvim",
-
-      --- Ui component library used by plugins like neo-tree.nvim
-      ---- https://github.com/MunifTanjim/nui.nvim
-      "MunifTanjim/nui.nvim",
-
       --- Speed up loading modules and improve startup time
       ---- https://github.com/lewis6991/impatient.nvim
       "lewis6991/impatient.nvim",
 
-
       --- Show startup time infomation
       ---- https://github.com/dstein64/vim-startuptime
       "dstein64/vim-startuptime",
-
-      --- Fancy dev icons
-      ---- https://github.com/kyazdani42/nvim-web-devicons
-      "kyazdani42/nvim-web-devicons",
 
       --- Fix CursorHold autocmd
       ---- https://github.com/antoinemadec/FixCursorHold.nvim
@@ -82,15 +69,14 @@ return packer.startup({
     use({
       --- Never forget a keybind
       ---- https://github.com/folke/which-key.nvim
-      -- lazyload
-      { "folke/which-key.nvim", config = get_plugin_config("which-key") }, -- TODO,
+      { "folke/which-key.nvim", config = get_plugin_config("which-key") },
 
       --- Auto pair delimiters
       ---- https://github.com/windwp/nvim-autopairs
       {
         "windwp/nvim-autopairs",
         config = function()
-          require("nvim-autopairs").setup({})
+          require("nvim-autopairs").setup()
         end,
       },
 
@@ -102,12 +88,25 @@ return packer.startup({
       ---- https://github.com/numToStr/Comment.nvim
       { "numToStr/Comment.nvim", config = get_plugin_config("comment") },
 
+      --- Better navigation between neovim splits and tmux panes
+      ---- https://github.com/numToStr/Navigator.nvim
+      { 'numToStr/Navigator.nvim',
+        config = function()
+          require('Navigator').setup()
+          local keymap = require("config.core.utils").keymap
+          keymap('n', "<C-h>", '<CMD>NavigatorLeft<CR>')
+          keymap('n', "<C-l>", '<CMD>NavigatorRight<CR>')
+          keymap('n', "<C-k>", '<CMD>NavigatorUp<CR>')
+          keymap('n', "<C-j>", '<CMD>NavigatorDown<CR>')
+          keymap('n', "<C-p>", '<CMD>NavigatorPrevious<CR>')
+        end },
+
       --- Fancy fuzzy finder
       ---- https://github.com/nvim-telescope/telescope.nvim
       {
         "nvim-telescope/telescope.nvim",
+        requires = { { 'nvim-lua/plenary.nvim' } },
         cmd = "Telescope",
-        module = "telescope",
         tag = "0.1.0",
         config = get_plugin_config("telescope"),
       },
@@ -117,26 +116,27 @@ return packer.startup({
       { "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async", config = get_plugin_config("ufo") },
 
       --- Project management
+      ---- https://github.com/ahmedkhalf/project.nvim
       {
         "ahmedkhalf/project.nvim",
         config = function()
           require("project_nvim").setup({
             silent_chdir = false,
+            patterns = { ".git", ".svn", "Makefile", "package.json" },
+            ignore_lsp = { "sumneko_lua" },
           })
         end,
       },
 
       --- Better notifications
-      ---- https://github.com/rcarriga/nvim-notify
-      -- replace
+      ---- https://github.com/vigoux/notifier.nvim
       {
         "vigoux/notifier.nvim",
         config = function()
-          require("notifier").setup({
-            -- You configuration here
-          })
+          require("notifier").setup()
         end,
       },
+
       --- Window picker used by neo-tree.nvim
       ---- https://github.com/s1n7ax/nvim-window-picker
       {
@@ -146,16 +146,27 @@ return packer.startup({
           require("window-picker").setup()
         end,
       },
+
+      --- File tree
+      ---- https://github.com/nvim-neo-tree/neo-tree.nvim
+      { "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = {
+          "nvim-lua/plenary.nvim",
+          "nvim-tree/nvim-web-devicons",
+          "MunifTanjim/nui.nvim",
+        },
+        config = get_plugin_config("neo-tree"),
+      },
     })
 
     ----------[ UI & Apperance ]----------
     use({
-      --- Dashboard
-      ---- https://github.com/goolord/alpha-nvim
-      -- lazyload maybe
-      { "goolord/alpha-nvim", config = get_plugin_config("alpha") },
+      --- Improve the default vim.ui interfaces
+      ----- https://github.com/stevearc/dressing.nvim
+      { 'stevearc/dressing.nvim', config = get_plugin_config("dressing") },
 
-      --- Colourschemes
+      --- Colourscheme
       ---- https://github.com/rebelot/kanagawa.nvim
       "rebelot/kanagawa.nvim",
 
@@ -167,6 +178,14 @@ return packer.startup({
       ---- https://github.com/nvim-lualine/lualine.nvim
       { "nvim-lualine/lualine.nvim", config = get_plugin_config("lualine") },
 
+      --- Indent blank line
+      ---- https://github.com/lukas-reineke/indent-blankline.nvim
+      { "lukas-reineke/indent-blankline.nvim", config = get_plugin_config("indent-blankline") },
+
+      --- Dashboard
+      ---- https://github.com/goolord/alpha-nvim
+      { "goolord/alpha-nvim", requires = { 'nvim-tree/nvim-web-devicons' }, config = get_plugin_config("alpha") },
+
       --- Bufferline
       ---- https://github.com/akinsho/bufferline.nvim
       {
@@ -174,33 +193,6 @@ return packer.startup({
         tag = "v2.*",
         requires = "kyazdani42/nvim-web-devicons",
         config = get_plugin_config("bufferline"),
-      },
-
-      --- Indent blank line
-      ---- https://github.com/lukas-reineke/indent-blankline.nvim
-      { "lukas-reineke/indent-blankline.nvim", config = get_plugin_config("indent-blankline") },
-
-      --- File tree
-      ---- https://github.com/nvim-neo-tree/neo-tree.nvim
-      { "nvim-neo-tree/neo-tree.nvim", config = get_plugin_config("neo-tree"), branch = "v2.x" },
-
-      --- Ahh... Zen, truly the place to be
-      ---- https://github.com/Pocco81/true-zen.nvim
-      -- lazyload
-      { "Pocco81/true-zen.nvim", config = get_plugin_config("true-zen") },
-
-      --- Dims inactive portions of code
-      ---- https://github.com/folke/twilight.nvim
-      -- lazyload
-      {
-        "folke/twilight.nvim",
-        config = function()
-          require("twilight").setup({
-            dimming = {
-              inactive = true,
-            },
-          })
-        end,
       },
     })
 
@@ -220,6 +212,7 @@ return packer.startup({
       },
       ---- https://github.com/williamboman/mason-lspconfig.nvim
       "williamboman/mason-lspconfig.nvim",
+
       ---- https://github.com/neovim/nvim-lspconfig
       { "neovim/nvim-lspconfig", config = get_plugin_config("lsp.config") },
 
@@ -231,10 +224,6 @@ return packer.startup({
         requires = "jayp0521/mason-null-ls.nvim", ---- https://github.com/jayp0521/mason-null-ls.nvim
       },
 
-      --- Floating code action menu
-      ---- https://github.com/weilbith/nvim-code-action-menu
-      { "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" },
-
       --- Show symbol when code actions are available
       ---- https://github.com/kosayoda/nvim-lightbulb
       {
@@ -242,11 +231,7 @@ return packer.startup({
         requires = "antoinemadec/FixCursorHold.nvim",
         config = function()
           vim.cmd([[highlight LightbulbSignYellow guifg=LightYellow ctermfg=LightYellow]])
-          vim.fn.sign_define(
-            "LightBulbSign",
-            { text = "כֿ", texthl = "LightbulbSignYellow", linehl = "", numhl = "" }
-          )
-
+          vim.fn.sign_define("LightBulbSign", { texthl = "LightbulbSignYellow" })
           require("nvim-lightbulb").setup({
             sign = { enabled = true },
             autocmd = { enabled = true },
@@ -254,17 +239,9 @@ return packer.startup({
         end,
       },
 
-      --- LSP renaming UI
-      ---- https://github.com/filipdutescu/renamer.nvim
-      { "filipdutescu/renamer.nvim", branch = "master", config = get_plugin_config("renamer") },
-
       --- Show diagnostics and the like in a prettier quickfix like buffer
       ---- https://github.com/folke/trouble.nvim
       { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons", config = get_plugin_config("trouble") },
-
-      --- LSP document symbols outline
-      ---- https://github.com/simrat39/symbols-outline.nvim
-      { "simrat39/symbols-outline.nvim", config = get_plugin_config("symbols-outline") },
 
       --- Show current code context on statusline/winbar
       ---- https://github.com/SmiteshP/nvim-navic
@@ -292,9 +269,10 @@ return packer.startup({
       ---- https://github.com/rafamadriz/friendly-snippets
       {
         "L3MON4D3/LuaSnip",
+        tag = "v1.1.0",
         event = "InsertEnter",
         module = "luasnip",
-        requires = "rafamadriz/friendly-snippets",
+        requires = { "rafamadriz/friendly-snippets" },
       },
     })
 
