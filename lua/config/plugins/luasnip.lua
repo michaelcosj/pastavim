@@ -1,6 +1,6 @@
 local ok, luasnip = pcall(require, "luasnip")
 if not ok then
-	return
+  return
 end
 
 -- Load snippets from runtime path (for friendly snippets plugin) and custom path
@@ -12,16 +12,16 @@ vim.api.nvim_set_hl(0, "SnipOrange", { fg = "#EE5007" })
 vim.api.nvim_set_hl(0, "SnipBlue", { fg = "#006E7F" })
 
 luasnip.config.setup({
-	ext_opts = {
-		[types.choiceNode] = {
-			active = {
-				virt_text = { { "●", "SnipOrange" } },
-			},
-		},
-		[types.insertNode] = {
-			active = {
-				virt_text = { { "●", "SnipBlue" } },
-			},
-		},
-	},
+  ext_opts = {
+    [types.choiceNode] = {
+      active = {
+        virt_text = { { "●", "SnipOrange" } },
+      },
+    },
+    [types.insertNode] = {
+      active = {
+        virt_text = { { "●", "SnipBlue" } },
+      },
+    },
+  },
 })
