@@ -42,6 +42,7 @@ opt.splitbelow = true
 opt.splitright = true
 opt.termguicolors = true
 opt.wrap = false
+opt.background = 'dark'
 
 -- search
 opt.hlsearch = true
