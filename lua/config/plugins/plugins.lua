@@ -270,8 +270,6 @@ return packer.startup({
       {
         "L3MON4D3/LuaSnip",
         tag = "v1.1.0",
-        event = "InsertEnter",
-        module = "luasnip",
         requires = { "rafamadriz/friendly-snippets" },
       },
     })

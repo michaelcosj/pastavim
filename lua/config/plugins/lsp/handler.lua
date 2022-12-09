@@ -45,9 +45,6 @@ function M.init()
       prefix = "",
     },
   })
-
-  -- for code CodeActionMenu
-  vim.g.code_action_menu_window_border = "rounded"
 end
 
 function M.diagnostics_keymaps(_)
