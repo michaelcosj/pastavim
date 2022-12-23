@@ -9,10 +9,17 @@ if not ok then
 end
 
 local formatting = null_ls.builtins.formatting
+local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.setup({
   sources = {
+    -- Diagnostics
+    diagnostics.mypy,
+    diagnostics.flake8,
+
+    -- Formatting
     formatting.prettierd,
+    formatting.black,
   },
   on_attach = function(client, bufnr)
     local handler = require("config.plugins.lsp.handler")
