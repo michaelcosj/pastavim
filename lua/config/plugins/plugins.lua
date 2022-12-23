@@ -106,7 +106,6 @@ return packer.startup({
       {
         "nvim-telescope/telescope.nvim",
         requires = { { 'nvim-lua/plenary.nvim' } },
-        cmd = "Telescope",
         tag = "0.1.0",
         config = get_plugin_config("telescope"),
       },
