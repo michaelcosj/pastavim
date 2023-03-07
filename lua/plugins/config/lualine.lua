@@ -4,6 +4,7 @@ if not ok then
 end
 
 local navic = require("nvim-navic")
+local lazy_status = require("lazy.status")
 
 lualine.setup({
   options = {
@@ -37,7 +38,14 @@ lualine.setup({
     lualine_x = {
       { navic.get_location, cond = navic.is_available },
     },
-    lualine_y = { "progress" },
+    lualine_y = {
+      "progress",
+      {
+        lazy_status.updates,
+        cond = lazy_status.has_updates,
+        color = { fg = "#ff9e64" },
+      },
+    },
     lualine_z = {
       { "location", separator = { left = '', right = '' } }
     },
