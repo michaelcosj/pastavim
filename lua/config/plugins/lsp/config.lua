@@ -46,6 +46,8 @@ local servers = {
   "marksman",
   "jedi_language_server",
   "sumneko_lua",
+  "svelte",
+  "tailwindcss",
   "tsserver",
   "rust_analyzer",
 }
