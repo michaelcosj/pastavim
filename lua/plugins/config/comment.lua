@@ -9,7 +9,7 @@ comment.setup({
 })
 
 -- keymaps
-local keymap = require("config.core.utils").keymap
+local keymap = require("core.utils").keymap
 local opt = { expr = true, remap = true, replace_keycodes = false }
 
 -- Toggle using count

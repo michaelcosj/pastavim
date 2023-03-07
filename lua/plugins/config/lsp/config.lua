@@ -11,7 +11,7 @@ end
 
 local on_attach = function(client, bufnr)
   -- Init mappings on attach
-  local handler = require("config.plugins.lsp.handler")
+  local handler = require("plugins.config.lsp.handler")
   handler.init()
 
   handler.lsp_keymaps(bufnr)
@@ -45,7 +45,7 @@ local servers = {
   "jsonls",
   "marksman",
   "jedi_language_server",
-  "sumneko_lua",
+  "lua_ls",
   "svelte",
   "tailwindcss",
   "tsserver",
@@ -62,7 +62,7 @@ for _, server in pairs(servers) do
     capabilities = capabilities,
   }
 
-  local has_custom_opts, custom_opts = pcall(require, "config.plugins.lsp.settings." .. server)
+  local has_custom_opts, custom_opts = pcall(require, "plugins.config.lsp.settings." .. server)
   if has_custom_opts then
     opts = vim.tbl_deep_extend("force", opts, custom_opts)
   end

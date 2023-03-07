@@ -1,4 +1,4 @@
-local keymap = require("config.core.utils").keymap
+local keymap = require("core.utils").keymap
 
 local M = {}
 

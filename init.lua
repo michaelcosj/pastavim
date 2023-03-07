@@ -4,5 +4,5 @@ if ok then
   impatient.enable_profile()
 end
 
-require("config.core")
-require("config.plugins")
+require("core")
+require("plugins")

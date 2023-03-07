@@ -1,5 +1,5 @@
 -- Shorten function name
-local keymap = require("config.core.utils").keymap
+local keymap = require("core.utils").keymap
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", {})

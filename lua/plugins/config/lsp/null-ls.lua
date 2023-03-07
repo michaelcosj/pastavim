@@ -22,7 +22,7 @@ null_ls.setup({
     formatting.black,
   },
   on_attach = function(client, bufnr)
-    local handler = require("config.plugins.lsp.handler")
+    local handler = require("plugins.lsp.handler")
     handler.common_keymaps(bufnr)
     handler.fmt_on_save(client)
   end,

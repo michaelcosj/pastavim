@@ -8,7 +8,7 @@ local navic = require("nvim-navic")
 lualine.setup({
   options = {
     icons_enabled = true,
-    theme = "auto",
+    theme = "kanagawa",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = {

@@ -65,7 +65,7 @@ bufferline.setup({
 })
 
 -- Keymaps
-local keymap = require("config.core.utils").keymap
+local keymap = require("core.utils").keymap
 
 keymap("n", "<Leader>0", "<cmd>BufferLinePick<cr>", {})
 for i = 1, 9 do

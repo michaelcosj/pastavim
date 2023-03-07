@@ -117,7 +117,7 @@ telescope.setup({
 
   pickers = {
     find_files = {
-      prompt_title = "✨ Search Project ✨",
+      prompt_title = "= Search Project =",
       hidden = true,
       layout_strategy = "vertical",
       mappings = {
@@ -134,16 +134,16 @@ telescope.setup({
     },
 
     git_status = {
-      prompt_title = "✨ Search Git Project ✨",
+      prompt_title = "= Search Git Project =",
       hidden = true,
     },
 
     live_grep = {
-      prompt_title = "✨ Live Grep ✨",
+      prompt_title = "= Live Grep =",
     },
 
     grep_string = {
-      prompt_title = "✨ Grep String ✨",
+      prompt_title = "= Grep String =",
     },
   },
 
@@ -153,4 +153,4 @@ telescope.setup({
 telescope.load_extension("projects")
 
 -- Keymaps
-require("config.core.utils").keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>", {})
+require("core.utils").keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>", {})
