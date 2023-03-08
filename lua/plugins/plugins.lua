@@ -17,10 +17,6 @@ return {
     end
   },
 
-  --- Show startup time infomation
-  ---- https://github.com/dstein64/vim-startuptime
-  "dstein64/vim-startuptime",
-
   --- Fix CursorHold autocmd
   ---- https://github.com/antoinemadec/FixCursorHold.nvim
   "antoinemadec/FixCursorHold.nvim",
@@ -192,12 +188,15 @@ return {
   },
 
   ----------[ LSP, Linters and Completions]----------
-  ---- https://github.com/williamboman/mason.nvim
+  ---- https://github.com/neovim/nvim-lspconfig
   {
-    "williamboman/mason.nvim",
+    "neovim/nvim-lspconfig",
     dependencies = {
+      ---- https://github.com/williamboman/mason.nvim
+      "williamboman/mason.nvim",
       ---- https://github.com/williamboman/mason-lspconfig.nvim
       "williamboman/mason-lspconfig.nvim",
+
     },
     config = function()
       require("mason").setup {
@@ -205,12 +204,6 @@ return {
           border = "rounded",
         }
       }
-    end
-  },
-
-  ---- https://github.com/neovim/nvim-lspconfig
-  { "neovim/nvim-lspconfig",
-    config = function()
       load_config("lsp.config")
     end
   },
