@@ -6,6 +6,7 @@ local function load_config(plugin)
 end
 
 return {
+
   ----------[ Core ]----------
   --- Fancy syntax highlighting, indents, folding and stuff
   ---- https://github.com/nvim-treesitter/nvim-treesitter
