@@ -63,18 +63,18 @@ return {
       keymap('n', "<C-k>", '<CMD>NavigatorUp<CR>')
       keymap('n', "<C-j>", '<CMD>NavigatorDown<CR>')
       keymap('n', "<C-p>", '<CMD>NavigatorPrevious<CR>')
-    end },
+    end
+  },
 
   --- Fancy fuzzy finder
   ---- https://github.com/nvim-telescope/telescope.nvim
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { { 'nvim-lua/plenary.nvim' } },
-    tag = "0.1.0",
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    tag = "0.1.1",
     config = function()
       load_config("telescope")
     end
-    ,
   },
 
   --- Better fold
@@ -107,15 +107,6 @@ return {
     end,
   },
 
-  --- Window picker d by neo-tree.nvim
-  ---- https://github.com/s1n7ax/nvim-window-picker
-  {
-    "s1n7ax/nvim-window-picker",
-    config = function()
-      require("window-picker").setup()
-    end,
-  },
-
   --- File tree
   ---- https://github.com/nvim-neo-tree/neo-tree.nvim
   { "nvim-neo-tree/neo-tree.nvim",
@@ -124,8 +115,12 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
+
+      ---- https://github.com/s1n7ax/nvim-window-picker
+      "s1n7ax/nvim-window-picker",
     },
     config = function()
+      require("window-picker").setup()
       load_config("neo-tree")
     end
     ,
@@ -253,8 +248,8 @@ return {
     "hrsh7th/nvim-cmp",
     config = function()
       load_config("cmp")
-    end
-    ,
+    end,
+    event = { "InsertEnter", "CmdLineEnter" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
@@ -272,8 +267,12 @@ return {
   ---- https://github.com/rafamadriz/friendly-snippets
   {
     "L3MON4D3/LuaSnip",
-    tag = "v1.1.0",
+    version = "1.2.1",
     dependencies = { "rafamadriz/friendly-snippets" },
+    event = "InsertEnter",
+    config = function()
+      load_config("luasnip")
+    end
   },
 
   ----------[ GIT ]----------
@@ -295,6 +294,8 @@ return {
     config = function()
       load_config("neogit")
     end
-    ,
   },
+
+  ----------[ GIT ]----------
+  { "michaelcosj/what-todo.nvim", dev = true }
 }

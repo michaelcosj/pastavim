@@ -27,6 +27,13 @@ require("lazy").setup(
       notify = true, -- get a notification when new updates are found
       frequency = 3600, -- check for updates every hour
     },
+    defaults = {
+      lazy = false, -- should plugins be lazy-loaded?
+    },
+    dev = {
+      -- directory where you store your local plugin projects
+      path = "~/Projects/Neovim",
+    },
     ui = {
       border = "rounded"
     }
