@@ -2,4 +2,4 @@
 
 My custom neovim configuration files
 
-[[/pastavim.png]]
+![pastavim](./pastavim.png)
