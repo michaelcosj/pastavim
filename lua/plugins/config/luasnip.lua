@@ -8,8 +8,8 @@ require("luasnip.loaders.from_vscode").lazy_load()
 
 local types = require("luasnip.util.types")
 
-vim.api.nvim_set_hl(0, "SnipOrange", { fg = "#EE5007" })
-vim.api.nvim_set_hl(0, "SnipBlue", { fg = "#006E7F" })
+vim.api.nvim_set_hl(0, "SnipOrange", { fg = "#EE5007", bg = "NONE", ctermbg = "NONE" })
+vim.api.nvim_set_hl(0, "SnipBlue", { fg = "#006E7F", bg = "NONE", ctermbg = "NONE" })
 
 luasnip.config.setup({
   ext_opts = {
