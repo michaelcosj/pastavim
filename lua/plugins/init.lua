@@ -18,7 +18,7 @@ require("plugins.config.lsp.handler").init()
 -- Setup package manager (lazy.nvim)
 ---- https://github.com/folke/lazy.nvim
 require("lazy").setup(
-  "plugins.plugins",
+  "plugins.spec",
   {
     checker = {
       -- automatically check for plugin updates
